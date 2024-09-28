@@ -1,0 +1,36 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.18'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'ru.khtu'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation "ai.djl:api:0.28.0"
+	implementation "ai.djl:basicdataset:0.28.0"
+	implementation "ai.djl:model-zoo:0.28.0"
+	implementation "ai.djl.mxnet:mxnet-engine:0.28.0"
+//	implementation "ai.djl.mxnet:mxnet-model-zoo:0.28.0"
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    testImplementation "org.mockito:mockito-core"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
